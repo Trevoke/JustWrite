@@ -14,7 +14,7 @@ JustWrite.Views.ProjectView = Backbone.View.extend({
 
     var pageListView = new JustWrite.Views.PageListView({
       collection: this.model.get('pages'),
-      el: $('body').find('.surface')
+      el: $('body')
     });
     
     console.log('creating project view: '+this.model.get('id'));
@@ -22,9 +22,9 @@ JustWrite.Views.ProjectView = Backbone.View.extend({
   },
 
   events: {
-    'click p.project-name': 'getPages',
+    'click div.project-name': 'getPages',
     'click p.project-title': 'editProjectName',
-    'click p.delete-project': 'deleteProject',
+    'click div.delete-project': 'deleteProject',
   },
 
   getPages: function() {    
@@ -56,8 +56,8 @@ JustWrite.Views.ProjectView = Backbone.View.extend({
     this.model.destroy();
     if (window.currentProject === this.model){
       $('.project-title').empty();
-      $('.surface').empty(); 
+      $('.page').remove(); 
+      window.currentProject = null;
     }
-    window.currentProject = null;
   }
 });

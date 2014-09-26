@@ -1,25 +1,16 @@
 function setEditableElements() {
-  
+
   if (window.currentProject != null && window.currentProject.get('pages').length > 0){
 
-    var pageHeaders = $('.page-header');
-    $.each(pageHeaders, function(i, header) {
-      var pageID = parseInt(header.parentElement.id);
+    var pageNames = $('.page-name');
+    $.each(pageNames, function(i, name) {
+      var pageID = parseInt(name.parentElement.parentElement.id);
 
       $(this).editInPlace({
         field_type: "text",
-        default_text: "New Page...",
+        default_text: "Page Title...",
         callback: function(unused, enteredText) {
-          var activePage = _.find(window.currentProject.get('pages').models, function(page) {
-              return page.id === pageID;
-            });
-
-          activePage.save({name: enteredText},
-                    // {silent: true},
-                    {success: function(page, response) {
-                      console.log('***page header successfully saved: '+page.id);
-                    }}
-          );
+          savePageHeader(enteredText, pageID)
         }
       });
     }); // end of pageHeaders
@@ -39,20 +30,27 @@ function setEditableElements() {
       });
     }); // end of pageContents
 
+  }; // end of if
+
+  if (window.currentProject != null && window.currentProject.get('pages').length >= 0){
 
     var projectName = $('.editable');
-    var project = window.currentProject;
 
     projectName.editInPlace({
+      // text_size: 18,
       default_text: "New Project...",
       callback: function(unused, enteredText) {
-        project.save({name: enteredText},
-                      {success: function(project, response) {
-                        $('.project-title').html(project.get('name'))
-                        console.log('$$$project name save: '+ project.get('id'))
-                      }})
+        var project = window.currentProject;
+        project.save(
+          {name: enteredText},
+          {success: function(project, response) {
+            $('.project-title').html(project.get('name'))
+            console.log('$$$project NAME saved project id: '+ project.get('id'))
+            } 
+          })
       }
     }); // end of projectName
 
   }; // end of if
+
 }; //end of setEditableElements

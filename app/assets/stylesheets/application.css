@@ -11,203 +11,332 @@
  * file per style scope.
  *
  *= require jquery.ui.all
+ *= require font-awesome
  *= require_tree .
  *= require_self
  */
 
 
- /*font-family: 'Ubuntu Mono', ;*/
- /*font-family: 'Quicksand', sans-serif;*/
- /*h1 { font-family: ‘Metrophobic’, Arial, serif; font-weight: 400; }*/
 
- body {
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-bottom: 0px;
-    margin-left: 0px;  
-    padding: 0; 
-    height: 100vh;
-    width: 100vw;
-    position: absolute;
+ /***** BASE *****/
+
+ html, body {
+    margin: 0;
+    margin-left: 0;
+    height: 100%;
+    width: 98.5%;
     top: 0;
     left: 0;
 }
 
-.container {
-
-    height: 100vh;
-    width: 100vw;
+h1, h2, h3, .header, .project-title, .project-title .inplace_field, .page-header, .page-header, .page-text-field, .page-footer, .help-icon, .help-content p, .close-help {
+    font-family: 'Roboto', sans-serif;
 }
 
-header {
-    position: relative;
-    top: 0;
-    left: 0;
-    height: 15%;
-}
-
-.title {
-    text-align: center;
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 700; 
-    font-size: 3.8em;
-    margin-top: 0;
-}
-
-.project-title {
-    text-align: center;
-    width: 30%;
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 400; 
+h1 {
+    font-weight: 300; 
     font-size: 2em;
-    margin-top: -30px;
-    margin: 0 auto;
-}
-
-h2, h3 {
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 700;    
 }
 
 h2 {
+    font-weight: 100;
     font-size: 2em;
 }
 
 h3 {
-    font-size: 1.5em;
+    font-weight: 300; 
+    font-size: 1em;
 }
 
-.new-page {
+a {
+    text-decoration: none;
+    color: black;
+    font-weight: 400;
+}
+
+/***** HELP SCREEN *****/
+
+.help-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0,0,0,0.65);
+    z-index: 5;
+    display: none;
+}
+
+.help-screen {
+    position: absolute;
+    height: 70%;
+    width: 60%;
+    top: 15%;
+    left: 20%;
+    background-color: white;
     border: solid 1px darkgrey;
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 400;   
-    padding: .5%;
-    position: fixed;
-    top: 30px;
-    left: 30px;
-    height: 1.5vw;
-    width: 1.5vw;
+    overflow: scroll;
+    z-index: 10;
+}
+/*
+.close-help {
+    position: absolute;
+    left: auto;
+    right: 0;
+    margin-top: 5px;
+    margin-right: 5px;
+    font-size: 1em;
+    font-weight: 300;
+    cursor: pointer;
+}*/
+
+.help-content .help-title {
+    font-weight: 400;
+}
+
+.help-content {
+    position: relative;
+    margin: 0 auto;
+    margin-top: 5%;
+}
+
+.help-content h2 {
     text-align: center;
+    font-size: 2em;
+    margin-bottom: 0;
+}
+
+.help-content h3 {
+    text-align: center;
+    font-weight: 100;
+    font-size: 1.25em;
+    margin-top: 0;
+}
+
+.help-content p {
+    position: relative;
+    width: 75%;
+    margin: 0 auto;
+    font-weight: 300;
+    margin-bottom: 2%;
+    text-align: justify;
+}
+
+/***** HEADER *****/
+
+.header {
+    font-weight: 300; 
+    position: relative;
+    top: 20px;
+    left: 20px;
+    z-index: 2;
+    background-color: white;
+    line-height: 1.51em;
+}
+
+.project-title {
+    font-weight: 300;
+    position: absolute;
+    text-align: center;
+    width: 30%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+}
+
+.project-title .inplace_field {
+    font-weight: 100;
+    font-size: .9em;
+}
+
+.title {
+    text-align: center;
+    font-weight: 400;
+    font-size: 1.5em !important;
     float: left;
+}
+
+.header-icon {
+    font-size: 1.5em;
+    display: inline-block;
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
     cursor: pointer;
 }
 
-.sidebar {
-    position: relative;
-    top: -100px;
-    border: solid 1px darkgrey;
-    padding: .5%;
-    margin: 0;
-    width: 10%;
-    height: 500px;
-    float: right;
-    margin-top: 1%;
-    overflow: hidden;
+.help-icon {
+    font-size: 1.35em;
+    font-weight: 300;
+    padding-left: 20px;
 }
 
-.clear {
-    content: "";
-    display: block;
-    height: 0;
-    clear: both;
+.menu {
+    display: none;
+    width: 15%;
+    min-width: 175px;
+}
+
+.menu-heading {
+    text-align: center;
+    padding-right: 5%;
+    display: inline-block;
+    cursor: pointer;
 }
 
 .projects {
+
+}
+
+.new-page {
+
+}
+
+.project-drop-down {
+    position: absolute;
+    background-color: white;
+    display: none;
+    cursor: auto;
+    border-left: solid 1px darkgrey;
+    border-right: solid 1px darkgrey;
+    border-bottom: solid 1px darkgrey;
+}
+
+.new-project {
+    cursor: pointer;
+    padding-left: 5px;
+    padding-right: 5px
+}
+
+.project-list {
+    font-weight: 100;
+    padding: 0;
+    list-style: none;
+}
+
+.project {
+    /*width: 100%;*/
+    text-align: left;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.project-name {
+    cursor: pointer;
+    display: inline-block;
+    width:85%;
     overflow: auto;
-    height: 70%;
-    margin-bottom: 5%;
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 700; 
-    font-size: 1em;
-    position: relative;
 }
 
-ul {
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 400; 
-    font-size: 1em;
+.delete-project {
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 400;
+    float: right;
+    width: 9%;
 }
 
-.surface {
-    float: left;
-    height: 83vh;
-    width: 83vw;
-}
+/***** SURFACE AND PAGES *****/
 
 .ghost {
     background-color: white;
     position: absolute;
-    height: 50vh;
-    width: 30vw;
+    height: 75vh;
+    width: 50vw;
     border: solid 1px darkgrey;
     cursor: move;
     opacity: 0.9;
     display: none;
-    z-index: 2;
+    z-index: 3;
 }
 
 .page {
-    height: 50vh;
-    width: 30vw;
+    height: 75vh;
+    width: 50vw;
+    min-width: 200px;
     border: solid 1px darkgrey;
     position: absolute !important;
     overflow:hidden;
     background-color: white;
+    z-index: 3;
 }
 
 .page-header {
+    position: relative;
     width: 100%;
     margin-bottom: 5%;
-    font-family: 'Quicksand', sans-serif;   
-    font-weight: 400; 
-    font-size: .75em;
 }
 
-.page-footer {
-    position: absolute;
-    width: 100%;
-    font-family: 'Quicksand', sans-serif;   
-    font-weight: 400; 
-    font-size: .75em; 
-    bottom: 10px;
-    margin-bottom: -5px;
-
-}
-
-.pageTextArea {
-    width: 100%;
-    resize: none;
-    outline: none;
-    border: none;
-    font-family: 'Fira Mono', monospace; 
-    font-size: 18px;
-}
-
-.pageTextField {
-    width: 45%;
-    height: 60%;
+.page-text-field {
+    position: relative;
+    text-align: center;
+    font-weight: 300;
+    font-size: 1em;
+    width: 49%;
     outline: none;
     border: none;
     margin: 0 auto;
     display: inline-block;
+    margin-bottom: 5%;
+}
+
+.page-name {
+    text-align: center;
+    float:left;
+    width: 49%;
+    margin: 0;
+    font-weight: 300;
+}
+
+.page-header-items-envelope {
+    float: right;
+    width: 49%; 
+    margin: 0;
+    text-align: right;
+    cursor: pointer;
 }
 
 
-.page-delete {
-    float: left;
+.page-header-item {
     display: inline-block;
+    font-weight: 300;
+    font-size: .75em;
+    text-align: right;
+    cursor: pointer;
+    margin-left: 5%;
 }
 
-.text {
-    height: 75%;
+.text, .page-text-area{
+    margin: 0 auto;
+    width: 98%;
+    height: 90%;
     overflow: auto;
-    font-family: 'Fira Mono', monospace;
-    font-weight: 400; 
-    font-size: 18px;
+    font-family: 'PT Mono', monospace;
+    font-size: 20px;
 }
+
+.page-text-area {
+    position: absolute;
+    resize: none;
+    outline: none;
+    border: none; 
+}
+
+.page-footer {
+    position: absolute;;
+    width: 100%;   
+    font-weight: 300; 
+    font-size: .75em; 
+    bottom: 10px;
+    margin-bottom: -5px;
+}
+
+.page-download {
+    cursor: pointer;
+}
+
+
 
 .ui-icon-gripsmall-diagonal-se {
     z-index: inherit !important;
 }
-
-

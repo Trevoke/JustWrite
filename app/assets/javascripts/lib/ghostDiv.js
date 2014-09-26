@@ -7,15 +7,18 @@ function ghostClick() {
     if (window.currentProject != null) {
       var pages = window.currentProject.get('pages');
 
-      savePage(pages, left, top);  
+      saveNewPage(pages, left, top);  
     } else {
-      window.currentProject = projects.create(
-        { name: "New Project" }, 
+      window.currentProject = window.projects.create(
+        { name: "New Project..." }, 
         { success: function(newProject) {
           var pages = window.currentProject.get('pages');
-          pages.url = '/projects/'+newProject.get('id')+'/pages';
+          var pagesUrl = function(){ 
+            return '/projects/' + newProject.get('id') + '/pages'
+          };
+          pages.url = pagesUrl;
 
-          savePage(pages, left, top);
+          saveNewPage(pages, left, top);
         }
       });
     };
